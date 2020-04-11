@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GeoAR.js demo</title>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <!--<script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script> --> <!--added later to make boxes move. adding this made the box not show up-->
+    <script>
+        THREEx.ArToolkitContext.baseURL = "https://raw.githack.com/jeromeetienne/ar.js/master/three.js/"
+    </script>
+</head>
+
+<!--<script src="script.js"></script>-->   
+<body style="margin: 0; overflow: hidden;">
+    <a-scene
+       vr-mode-ui="enabled: false"
+		embedded
+        arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
+        
+        <a-assets>
+            <a-asset-item id="duck" src="assets/duck/Duck.gltf"></a-asset-item>
+            <a-asset-item id="magnemite" src="assets/magnemite/scene.gltf"></a-asset-item>
+            <a-asset-item id="trex" src="assets/tyrannosaurus_rex/scene.gltf"></a-asset-item>
+            <a-asset-item id="cat" src="assets/cat_husa/scene.gltf"></a-asset-item>
+            <a-asset-item id="luigi" src="assets/luigi/scene.gltf"></a-asset-item>
+            <a-asset-item id="mario" src="assets/mario/scene.gltf"></a-asset-item>
+            <a-asset-item id="peach" src="assets/peach/scene.gltf"></a-asset-item>
+            <a-asset-item id="daisy" src="assets/daisy/scene.gltf"></a-asset-item>
+            <a-asset-item id="mickey" src="assets/mickey/scene.gltf"></a-asset-item>
+            <a-asset-item id="bird" src="assets/bird/scene.gltf"></a-asset-item>
+            <a-asset-item id="buck" src="assets/buck/scene.gltf"></a-asset-item>
+            <a-asset-item id="dog" src="assets/dog/scene.gltf"></a-asset-item>
+            <a-asset-item id="hellokitty" src="assets/hello_kitty/scene.gltf"></a-asset-item>
+            <a-asset-item id="horse" src="assets/horse/scene.gltf"></a-asset-item>
+            <a-asset-item id="ankylosaurus" src="assets/ankylosaurus/scene.gltf"></a-asset-item>
+            <a-asset-item id="peppapig" src="assets/peppa_pig/scene.gltf"></a-asset-item>
+            <a-asset-item id="bowser" src="assets/bowser/scene.gltf"></a-asset-item>
+            <a-asset-item id="turkeyflag" src="assets/turkish_flag/scene.gltf"></a-asset-item>
+            <a-asset-item id="babyyoda1" src="assets/babyYoda1/scene.gltf"></a-asset-item>
+            <a-asset-item id="babyyoda2" src="assets/babyYoda2/scene.gltf"></a-asset-item>
+            
+        </a-assets>    
+        
+        <a-camera gps-camera rotation-reader>
+		</a-camera>
+        
+        <!--myrtle state park-->
+        <!--<a-entity gltf-model="#duck" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -78.9253622; latitude: 33.6519995;"></a-entity>
+        <a-entity gltf-model="#mario" rotation="0 0 0" scale="1.0 1.0 1.0" gps-entity-place="longitude: -78.9269349; latitude: 33.6499127;" ></a-entity>
+        <a-entity gltf-model="#peach" rotation="0 0 0" scale="0.1 0.1 0.1" position="0 -5 0" gps-entity-place="longitude:  -78.9283532; latitude: 33.6483155;" ></a-entity>
+        <a-entity gltf-model="#mickey" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -78.9329927; latitude: 33.6463519;" ></a-entity>
+        <a-entity gltf-model="#trex" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -78.9343576; latitude: 33.6490944;" ></a-entity>
+        <a-entity gltf-model="#cat" rotation="0 0 0" scale="0.1 0.1 0.1" gps-entity-place="longitude: -78.9327805; latitude: 33.6516507;" ></a-entity>
+        <a-entity gltf-model="#bird" rotation="0 0 0" scale="0.3 0.3 0.3" position="0 0 10" gps-entity-place="longitude: -78.9318642; latitude: 33.6537159;" ></a-entity>
+        <a-entity gltf-model="#buck" rotation="0 0 0" scale="0.2 0.2 0.2" gps-entity-place="longitude: -78.9303678; latitude: 33.6521137;" ></a-entity>-->
+        
+        <!--myrtle state park smaller area-->
+      <!--  <a-entity gltf-model="#duck" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -78.9274727; latitude: 33.6499605;"></a-entity>
+        <a-entity gltf-model="#mario" rotation="0 0 0" scale="1.0 1.0 1.0" gps-entity-place="longitude: -78.9275867; latitude: 33.6507313;" ></a-entity>
+        <a-entity gltf-model="#peach" rotation="0 0 0" scale="0.1 0.1 0.1" position="0 -5 0" gps-entity-place="longitude:  -78.9286408; latitude: 33.6520272;" ></a-entity>
+        <a-entity gltf-model="#mickey" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -78.9324640; latitude: 33.6520718;" ></a-entity>
+        <a-entity gltf-model="#trex" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -78.9307886; latitude: 33.6480623;" ></a-entity>
+        <a-entity gltf-model="#cat" rotation="0 0 0" scale="0.1 0.1 0.1" gps-entity-place="longitude: -78.9312922; latitude: 33.6475482;" ></a-entity>
+        <a-entity gltf-model="#bird" rotation="0 0 0" scale="0.3 0.3 0.3" position="0 0 10" gps-entity-place="longitude: -78.9296795; latitude: 33.6476314;" ></a-entity>
+        <a-entity gltf-model="#buck" rotation="0 0 0" scale="0.2 0.2 0.2" gps-entity-place="longitude: -78.9285084; latitude: 33.6484840;" ></a-entity>-->
+        
+        <!--j-->
+        <a-entity gltf-model="#babyyoda1" rotation="0 0 0" scale="2.0 2.0 2.0" gps-entity-place="longitude: -84.206275; latitude: 35.863145;"></a-entity>
+        <a-entity gltf-model="#babyyoda2" rotation="0 0 0" scale="0.1 0.1 0.1" gps-entity-place="longitude: -84.206301; latitude: 35.863148;" ></a-entity>
+        <!--<a-entity gltf-model="#magnemite" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -84.206301; latitude: 35.863148;" animation-mixer></a-entity>-->
+        <!--<a-entity gltf-model="#duck" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.206275; latitude: 35.863145;"></a-entity>
+        <a-entity gltf-model="#turkeyflag" rotation="0 0 0" scale="0.2 0.2 0.2" gps-entity-place="longitude: -84.206301; latitude: 35.863148;" ></a-entity>-->
+        <!--<a-entity gltf-model="#bowser" rotation="0 0 0" scale="0.1 0.1 0.1" gps-entity-place="longitude: -84.206301; latitude: 35.863148;" ></a-entity>--> <!--NEEDS TO BE SMALLER-->
+        <!--<a-entity gltf-model="#peppapig" rotation="0 0 0" scale="2.0 2.0 2.0" gps-entity-place="longitude: -84.206249; latitude: 35.863141;" ></a-entity>-->
+        <!--<a-entity gltf-model="#peach" rotation="0 0 0" scale="0.1 0.1 0.1" position="0 -5 0" gps-entity-place="longitude:  -84.206288; latitude: 35.863151;" ></a-entity>
+        <a-entity gltf-model="#daisy" rotation="0 0 0" scale="0.2 0.2 0.2" position="0 -2 0" gps-entity-place="longitude: -84.206313; latitude: 35.863145;" ></a-entity>
+        <a-entity obj-model="obj:assets/teapot.obj" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.206290; latitude: 35.863143;" ></a-entity>
+        <a-entity gltf-model="#mickey" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.206275; latitude: 35.863149;" ></a-entity>
+        <a-entity gltf-model="#trex" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.206306; latitude: 35.863155;" ></a-entity>
+        <a-entity gltf-model="#cat" rotation="0 0 0" scale="0.1 0.1 0.1" gps-entity-place="longitude: -84.206310; latitude: 35.863160;" ></a-entity>-->
+        
+        <!--<a-entity gltf-model="#bird" rotation="0 0 0" scale="0.3 0.3 0.3" position="0 0 10" gps-entity-place="longitude: -84.206301; latitude: 35.863148;" ></a-entity>
+        <a-entity gltf-model="#buck" rotation="0 0 0" scale="0.2 0.2 0.2" gps-entity-place="longitude: -84.206249; latitude: 35.863141;" ></a-entity>
+        <a-entity gltf-model="#dog" rotation="0 0 0" scale="0.2 0.2 0.2" gps-entity-place="longitude:  -84.206288; latitude: 35.863151;" ></a-entity>-->
+        <!--the dog has green grass under him-->
+        <!--<a-entity gltf-model="#hellokitty" rotation="90 0 0" scale="0.01 0.01 0.01" position="0 0 0" gps-entity-place="longitude: -84.206313; latitude: 35.863145;" ></a-entity>
+        <a-entity gltf-model="#horse" rotation="0 0 0" scale="0.002 0.002 0.002" position="0 -10 0" gps-entity-place="longitude: -84.206275; latitude: 35.863149;" ></a-entity>
+        <a-entity gltf-model="#ankylosaurus" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.206310; latitude: 35.863160;" ></a-entity>
+        
+        <!--j currenty unused-->
+        <!--<a-entity geometry="primitive: box; width: 3" material="color: red" gps-entity-place="longitude: -84.206301; latitude: 35.863148;" ></a-entity>-->
+        <!--<a-entity geometry="primitive: plane; width: 3; height: 2" material="color: green" gps-entity-place="longitude: -84.206249; latitude: 35.863141;" ></a-entity>-->
+        <!--<a-entity gltf-model="assets/question_mark_blockSMB/scene.gltf" rotation="0 0 0" scale="0.01 0.01 0.01" gps-entity-place="longitude: -84.206249; latitude: 35.863141;" ></a-entity>  0.01 WAS STILL TOO LARGE-->
+        <!-- <a-entity geometry="primitive: cylinder; radius: 1.0; height: 6" material="color: yellow" gps-entity-place="longitude:  -84.206288; latitude: 35.863151;" ></a-entity>-->
+        <!--<a-entity geometry="primitive: sphere; radius: 2.2" material="color: orange" gps-entity-place="longitude: -84.206313; latitude: 35.863145;" ></a-entity>-->
+        <!--<a-entity gltf-model="assets/bearded_dragon/scene.gltf" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.206280; latitude: 35.863153;" ></a-entity>-->
+        
+        <!--mel-->
+        <!--<a-entity gltf-model="assets/duck/Duck.gltf" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.211673; latitude: 35.860664;"></a-entity> 
+        <a-entity gltf-model="assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -84.211717; latitude: 35.860713;" animation-mixer></a-entity>
+        <a-entity geometry="primitive: box; width: 3" material="color: red" gps-entity-place="longitude: -84.211733; latitude: 35.860654;" ></a-entity>-->
+        
+        <!--mossman-->
+        <!--<a-entity gltf-model="assets/duck/Duck.gltf" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -83.926822; latitude: 35.958780;"></a-entity> 
+        <a-entity gltf-model="assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -83.926934; latitude: 35.958716;" animation-mixer></a-entity>
+        <a-entity  geometry="primitive: box; width: 3" material="color: blue" gps-entity-place="longitude: -83.926934; latitude: 35.958716;" animation-mixer></a-entity>
+        <a-entity geometry="primitive: box; width: 3" material="color: red" gps-entity-place="longitude: -83.926937; latitude: 35.958784;" ></a-entity>
+        <a-entity  geometry="primitive: sphere; radius: 2.2" material="color: orange" gps-entity-place="longitude: -83.926964; latitude: 35.958777;" animation-mixer></a-entity>
+        <a-entity geometry="primitive: cylinder; radius: 1.0; height: 6" material="color: green" gps-entity-place="longitude: -83.927078; latitude: 35.958666;" ></a-entity>-->
+        <a-entity gltf-model="#duck" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -83.926934; latitude: 35.958716;"></a-entity> 
+        <a-entity gltf-model="#babyyoda1" rotation="0 0 0" scale="2.0 2.0 2.0" gps-entity-place="longitude: -83.927010; latitude: 35.958935;"></a-entity>
+        <a-entity gltf-model="#babyyoda2" rotation="0 0 0" scale="0.1 0.1 0.1" gps-entity-place="longitude: -83.926822; latitude: 35.958780;" ></a-entity><!--insidemossman-->
+        
+        <!--minkao-->
+        <!--<a-entity gltf-model="assets/duck/Duck.gltf" rotation="90 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -83.926822; latitude: 35.958780;"></a-entity> 
+        <a-entity gltf-model="assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -83.925321; latitude: 35.958715;" animation-mixer></a-entity>
+        <a-entity geometry="primitive: box; width: 3" material="color: red" gps-entity-place="longitude: -83.925430; latitude: 35.959042;" ></a-entity>
+        <a-entity geometry="primitive: sky" material="color: blue" gps-entity-place="longitude: -83.925388; latitude: 35.958898;" ></a-entity>
+        <a-entity geometry="primitive: plane; width: 3; height: 2" material="color: green" gps-entity-place="longitude: -83.925106; latitude: 35.958698;" ></a-entity>
+        <a-entity geometry="primitive: cylinder; radius: 1.0; height: 6" material="color: yellow" gps-entity-place="longitude:  -83.924974; latitude: 35.958627;" ></a-entity>
+        <a-entity geometry="primitive: sphere; radius: 2.2" material="color: orange" gps-entity-place="longitude: -83.924782; latitude: 35.958697;" ></a-entity>--> <!--center of building-->
+        
+        <!--lea-->
+      <!--  <a-entity gltf-model="assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -84.209342; latitude: 35.857745;" animation-mixer></a-entity>
+        <a-entity gltf-model="assets/duck/Duck.gltf" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.209210; latitude: 35.857772;"></a-entity>
+       <a-entity geometry="primitive: box; width: 3" material="color: red" gps-entity-place="longitude: -84.209291; latitude: 35.857690;" ></a-entity>
+        <a-entity geometry="primitive: plane; width: 3; height: 2" material="color: green" gps-entity-place="longitude: -84.209257; latitude: 35.857756;" ></a-entity>
+        <a-entity geometry="primitive: cylinder; radius: 1.0; height: 6" material="color: yellow" gps-entity-place="longitude: -84.209365; latitude: 35.857792;" ></a-entity>
+        <a-entity geometry="primitive: sphere; radius: 2.2" material="color: orange" gps-entity-place="longitude: -84.209178; latitude: 35.857696;" ></a-entity>-->
+        <a-entity gltf-model="#trex" rotation="0 0 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -84.209200; latitude: 35.857800;" ></a-entity>
+        
+         <!--shar-->
+        <!--<a-entity gltf-model="assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -84.193543; latitude: 35.875699;"></a-entity>
+        <a-entity gltf-model="assets/duck/Duck.gltf" rotation="0 90 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.193693; latitude: 35.875794;"></a-entity>
+       <a-entity geometry="primitive: box; width: 3" material="color: red" gps-entity-place="longitude: -84.193601; latitude: 35.875909;" ></a-entity>
+        <a-entity geometry="primitive: plane; width: 3; height: 2" material="color: green" gps-entity-place="longitude: -84.193815; latitude: 35.875829;" ></a-entity>
+        <a-entity geometry="primitive: cylinder; radius: 1.0; height: 6" material="color: yellow" gps-entity-place="longitude: -84.193717; latitude: 35.875650;" ></a-entity>
+        <a-entity geometry="primitive: sphere; radius: 2.2" material="color: orange" gps-entity-place="longitude: -84.193496; latitude: 35.875605;" ></a-entity>-->
+        
+         <!--mari-->
+       <a-entity gltf-model="#magnemite" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -84.187170; latitude: 35.854817;" animation-mixer></a-entity>
+        <a-entity gltf-model="#peppapig" rotation="0 0 0" scale="2.0 2.0 2.0" gps-entity-place="longitude: -84.187501; latitude: 35.854988;"></a-entity>
+        <a-entity gltf-model="#mario" rotation="0 0 0" scale="1.0 1.0 1.0" gps-entity-place="longitude: -84.187316; latitude: 35.854980;"></a-entity>
+      <a-entity gltf-model="#trex" rotation="0 0 0" scale="1.0 1.0 1.0" gps-entity-place="longitude: -84.187447; latitude: 35.854909;"></a-entity>
+        <a-entity gltf-model="#turkeyflag" rotation="0 0 0" scale="0.2 0.2 0.2" gps-entity-place="longitude: -84.187550; latitude: 35.854924;"></a-entity>
+        
+       
+         <!--rebe-->
+        <a-entity gltf-model="#mickey" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.186674; latitude: 35.855135;"></a-entity>
+        <!--<a-entity gltf-model="#duck" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.186592; latitude: 35.855106;"></a-entity>-->
+        
+        <!--gab-->
+       <a-entity gltf-model="#magnemite" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -84.174947; latitude: 35.864759;"></a-entity>
+        <a-entity gltf-model="#trex" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.174851; latitude: 35.864630;"></a-entity>
+        
+        <!--jes-->
+        <!--<a-entity gltf-model="assets/magnemite/scene.gltf" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -84.209843; latitude: 35.864511;"></a-entity>
+        <a-entity gltf-model="assets/duck/Duck.gltf" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.209759; latitude: 35.864582;"></a-entity>-->
+        
+        <!--M dc-->
+        <!--<a-entity gltf-model="assets/tyrannosaurus_rex/scene.gltf" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -76.999979; latitude: 38.877644;"></a-entity>
+        <a-entity gltf-model="assets/duck/Duck.gltf" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -77.000053; latitude: 38.877619;"></a-entity>-->
+        
+        <!--mel walk-->
+        <!--<a-entity gltf-model="#mickey" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.2114077; latitude: 35.8616761;"></a-entity>
+        <a-entity gltf-model="#mario" rotation="0 0 0" scale="1.0 1.0 1.0" gps-entity-place="longitude: -84.2114939; latitude: 35.8580861;"></a-entity>
+        <a-entity gltf-model="#daisy" rotation="0 0 0" scale="0.2 0.2 0.2" gps-entity-place="longitude: -84.2119908; latitude: 35.8568386;"></a-entity>
+        <a-entity gltf-model="#peach" rotation="0 0 0" scale="0.1 0.1 0.1" gps-entity-place="longitude: -84.2112149; latitude: 35.8545315;"></a-entity>
+        <a-entity gltf-model="#luigi" rotation="0 0 0" scale="0.2 0.2 0.2" gps-entity-place="longitude: -84.2100042; latitude: 35.8542505;"></a-entity>
+        <a-entity gltf-model="#trex" rotation="0 0 0" scale="0.5 0.5 0.5" gps-entity-place="longitude: -84.2082367; latitude: 35.8538489;"></a-entity>
+        <a-entity gltf-model="#cat" rotation="0 0 0" scale="0.1 0.1 0.1" gps-entity-place="longitude: -84.2080097; latitude: 35.8516980;"></a-entity>-->
+        
+	</a-scene>
+    
+    <script>
+    function onClick() 
+{
+	if (typeof DeviceMotionEvent.requestPermission === 'function') 
+	{
+		DeviceMotionEvent.requestPermission()
+		.then(permissionState => {
+			if (permissionState === 'granted') 
+			{
+				// DeviceMotionEvent.requestPermission() has been granted
+			}
+        })
+        .catch(console.error);
+       }
+    
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') 
+	{
+		DeviceOrientationEvent.requestPermission()
+		.then(permissionState => {
+			if (permissionState === 'granted') 
+			{
+				// DeviceMotionEvent.requestPermission() has been granted
+			}
+        })
+        .catch(console.error);
+       }
+}
+        </script>
+    
+</body>
+</html>
